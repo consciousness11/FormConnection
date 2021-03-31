@@ -97,6 +97,7 @@ namespace FormConnection
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(324, 98);
             this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
             // button1
             // 
@@ -116,6 +117,7 @@ namespace FormConnection
             this.button2.TabIndex = 8;
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -125,6 +127,7 @@ namespace FormConnection
             this.button3.TabIndex = 9;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 

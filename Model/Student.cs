@@ -82,5 +82,79 @@ namespace FormConnection.Model
         }
         #endregion
 
+        #region Update
+        public bool Update(Student st)
+        {
+            bool isUpdated = false;
+            SqlConnection conn = new SqlConnection(cnn);
+            try
+            {
+                string query = "UPDATE stud_info SET  name = @name , marks = @marks Where Roll = @roll";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@roll", st.roll);
+                cmd.Parameters.AddWithValue("@name", st.name);
+                cmd.Parameters.AddWithValue("@marks", st.marks);
+
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    isUpdated = true;
+                }
+                else
+                {
+                    isUpdated = false;
+                }
+
+
+            }catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return isUpdated;
+
+        }
+
+
+        #endregion
+
+        public bool Delete(Student st)
+        {
+            bool isDeleted = false;
+            SqlConnection conn = new SqlConnection(cnn);
+            try
+            {
+                string query = "DELETE from stud_info Where Roll = @roll";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@roll", st.roll);
+                
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    isDeleted = true;
+                }
+                else
+                {
+                    isDeleted = false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return isDeleted;
+        }
+
     }
 }
